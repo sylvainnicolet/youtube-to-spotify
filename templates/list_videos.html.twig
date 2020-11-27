@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/list_videos.css">
+{% endblock %}
+
+{% block body %}
+     <div class="container">
+         <table>
+             <thead>
+                 <tr>
+                     <th class="number">#</th>
+                     <th>Title</th>
+                 </tr>
+             </thead>
+             <tbody>
+
+             {% for video in videos %}
+                 <tr>
+                     <td class="number">{{ loop.index }}</td>
+                     <td>{{ video.title }}</td>
+                 </tr>
+             {% endfor %}
+
+             </tbody>
+         </table>
+     </div>
+
+{% endblock %}

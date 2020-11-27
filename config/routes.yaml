@@ -1,3 +1,18 @@
+
+# APP
 index:
     path: /
     controller: App\Controller\Converter::index
+
+error:
+    path: /error
+    controller: App\Controller\Converter::error
+
+# YOUTUBE
+get_youtube_playlist:
+    path: /get-youtube-playlist
+    controller: App\Controller\Converter::getYoutubePlaylist
+
+list_videos:
+    path: /list-videos
+    controller: App\Controller\Converter::listVideos
