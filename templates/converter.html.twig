@@ -1,5 +1,58 @@
 {% extends "base.html.twig" %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/converter.css">
+{% endblock %}
+
 {% block body %}
-    <h1>Hello World!</h1>
+    <div class="container">
+        <div class="wrapper">
+
+            <div class="action-box">
+                <a href="">
+                    <div class="action-btn">
+                        <div class="action-text">Connect</div>
+                    </div>
+                </a>
+                <div class="step-circle">
+                    <div class="step-number">1</div>
+                </div>
+                <div class="step-description">
+                    Connect to your
+                    Youtube account
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="action-box">
+                <a class="action-btn" href="">
+                    <div class="action-text">Connect</div>
+                </a>
+                <div class="step-circle">
+                    <div class="step-number">1</div>
+                </div>
+                <div class="step-description">
+                    Connect to your
+                    Youtube account
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="action-box">
+                <a class="action-btn" href="">
+                    <div class="action-text">Connect</div>
+                </a>
+                <div class="step-circle">
+                    <div class="step-number">1</div>
+                </div>
+                <div class="step-description">
+                    Connect to your
+                    Youtube account
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

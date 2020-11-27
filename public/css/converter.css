@@ -1,0 +1,85 @@
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.action-box {
+    width: 200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 40px;
+    width: 150px;
+
+    background: white;
+    border-radius: 20px;
+}
+
+.action-text {
+    color: #1C395C;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.step-circle {
+    height: 40px;
+    width: 40px;
+
+    margin: 30px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+    border-radius: 20px;
+}
+
+.step-number {
+    color: #1C395C;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.step-description {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.line {
+    width: 100px;
+
+    margin-top: 20px;
+
+    border-top: white 2px solid;
+}
