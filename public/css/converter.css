@@ -21,16 +21,16 @@ a {
     align-items: center;
 }
 
-.action-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.description {
+    margin-bottom: 20px;
 
-    height: 40px;
-    width: 150px;
-
-    background: white;
-    border-radius: 20px;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 20px;
 }
 
 .form {
@@ -41,7 +41,8 @@ a {
 
 .field {
     height: 40px;
-    width: 200px;
+    width: 600px;
+    margin-bottom: 20px;
 
     background: white;
     border-radius: 20px;
@@ -63,7 +64,6 @@ a {
     border-radius: 20px;
     border: none;
     cursor:pointer;
-    margin-bottom: 20px;
 
     color: #1C395C;
     text-transform: uppercase;
@@ -74,41 +74,7 @@ a {
     text-align: center;
 }
 
-.step-circle {
-    height: 40px;
-    width: 40px;
-
-    margin: 30px 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: white;
-    border-radius: 20px;
-}
-
-.step-number {
-    color: #1C395C;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    font-size: 18px;
-}
-
-.step-description {
+.get-btn:hover {
+    background: #FF6C00;
     color: white;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    letter-spacing: 2px;
-    font-size: 16px;
-    text-align: center;
-    line-height: 20px;
-}
-
-.line {
-    width: 100px;
-
-    margin-top: 20px;
-
-    border-top: white 2px solid;
 }

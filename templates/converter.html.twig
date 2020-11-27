@@ -7,51 +7,15 @@
 {% block body %}
     <div class="container">
         <div class="wrapper">
-
             <div class="action-box">
-                <form class="form" action="/get-youtube-playlist">
-                    <input class="get-btn" type="submit" value="Get">
-                    <input class="field" type="text" id="playlist_url" name="playlist_url" placeholder="Playlist URL" required>
-                </form>
-
-                <div class="step-circle">
-                    <div class="step-number">1</div>
-                </div>
-                <div class="step-description">
+                <div class="description">
                     Past your Playlist URL
                 </div>
+                <form class="form" action="/get-youtube-playlist">
+                    <input class="field" type="text" id="playlist_url" name="playlist_url" placeholder="Playlist URL" required>
+                    <input class="get-btn" type="submit" value="Get">
+                </form>
             </div>
-
-{#            <div class="line"></div>#}
-
-{#            <div class="action-box">#}
-{#                <a class="action-btn" href="">#}
-{#                    <div class="action-text">Connect</div>#}
-{#                </a>#}
-{#                <div class="step-circle">#}
-{#                    <div class="step-number">1</div>#}
-{#                </div>#}
-{#                <div class="step-description">#}
-{#                    Connect to your#}
-{#                    Youtube account#}
-{#                </div>#}
-{#            </div>#}
-
-{#            <div class="line"></div>#}
-
-{#            <div class="action-box">#}
-{#                <a class="action-btn" href="">#}
-{#                    <div class="action-text">Connect</div>#}
-{#                </a>#}
-{#                <div class="step-circle">#}
-{#                    <div class="step-number">1</div>#}
-{#                </div>#}
-{#                <div class="step-description">#}
-{#                    Connect to your#}
-{#                    Youtube account#}
-{#                </div>#}
-            </div>
-
         </div>
     </div>
 {% endblock %}
