@@ -15,10 +15,10 @@
              </thead>
              <tbody>
 
-             {% for video in videos %}
+             {% for youtube_title in youtube_titles %}
                  <tr>
                      <td class="number">{{ loop.index }}</td>
-                     <td>{{ video.title }}</td>
+                     <td>{{ youtube_title }}</td>
                  </tr>
              {% endfor %}
 

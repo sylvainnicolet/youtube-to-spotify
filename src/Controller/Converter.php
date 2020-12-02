@@ -44,9 +44,10 @@ class Converter
         }
 
         $playlist = $response['items'];
-        $playlist = $this->playlistAddTitle($playlist);
+        $youtubeTitles = $this->getYoutubeTitles($playlist);
 
-        $data['videos'] = $playlist['videos'];
+        $data['youtube_titles'] = $youtubeTitles;
+//        dd($data);
 
         return $this->render('list_videos.html.twig', $data);
     }
@@ -56,13 +57,11 @@ class Converter
         return new Response($html);
     }
 
-    protected function playlistAddTitle($playlist) {
+    protected function getYoutubeTitles($playlist) {
         $titles = [];
         foreach ($playlist as $key => $video) {
-            $titles[$key]['title'] = $video['snippet']['title'];
+            $titles[$key] = $video['snippet']['title'];
         }
-        $playlist['videos'] = $titles;
-
-        return $playlist;
+        return ($titles);
     }
 }
