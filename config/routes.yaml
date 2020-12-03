@@ -8,6 +8,11 @@ error:
     path: /error
     controller: App\Controller\Converter::error
 
+# SPOTIFY
+auth_spotify:
+    path: /auth-spotify
+    controller: App\Controller\Converter::authSpotify
+
 # YOUTUBE
 get_youtube_playlist:
     path: /get-youtube-playlist

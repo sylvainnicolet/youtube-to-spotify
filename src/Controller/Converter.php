@@ -3,7 +3,11 @@
 namespace App\Controller;
 
 use Exception;
+use SpotifyWebAPI\Session;
+use SpotifyWebAPI\SpotifyWebAPI;
+use stdClass;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Twig\Environment;
 
 class Converter
@@ -18,10 +22,43 @@ class Converter
     }
 
     public function index() {
-        return $this->render('converter.html.twig');
+        return $this->render('login.html.twig');
+    }
+
+    public function authSpotify() {
+        $session = new Session(
+            'clientId',
+            'clientSecret',
+            'redirect_uri'
+        );
+
+        $api = new SpotifyWebAPI();
+
+        if (isset($_GET['code'])) {
+            $session->requestAccessToken($_GET['code']);
+            $api->setAccessToken($session->getAccessToken());
+
+            // Store token
+            $sessionHttp = new \Symfony\Component\HttpFoundation\Session\Session();
+            $sessionHttp->start();
+            $sessionHttp->set('token',$session->getAccessToken());
+
+            return $this->render('converter.html.twig');
+        } else {
+            $options = [
+                'scope' => [
+                    'playlist-modify-private',
+                    'playlist-modify-public'
+                ],
+            ];
+
+            header('Location: ' . $session->getAuthorizeUrl($options));
+            die();
+        }
     }
 
     public function getYoutubePlaylist() {
+        // Youtube
         try {
             $url = $_GET['playlist_url'];
             $res = parse_url($url);
@@ -42,13 +79,12 @@ class Converter
             $data['error'] = 'Invalid URL or Playlist Id.';
             return $this->render('error.html.twig', $data);
         }
+        $playlistYoutube = $response['items'];
 
-        $playlist = $response['items'];
-        $youtubeTitles = $this->getYoutubeTitles($playlist);
+        // Spotify
+        $playlistSpotify = $this->convertYoutubePlaylistToSpotify($playlistYoutube);
 
-        $data['youtube_titles'] = $youtubeTitles;
-//        dd($data);
-
+        $data['playlist'] = $playlistSpotify;
         return $this->render('list_videos.html.twig', $data);
     }
 
@@ -57,11 +93,24 @@ class Converter
         return new Response($html);
     }
 
-    protected function getYoutubeTitles($playlist) {
-        $titles = [];
-        foreach ($playlist as $key => $video) {
-            $titles[$key] = $video['snippet']['title'];
+    protected function convertYoutubePlaylistToSpotify($playlistYoutube) {
+        $sessionHttp = new \Symfony\Component\HttpFoundation\Session\Session();
+        $api = new SpotifyWebAPI();
+        $api->setAccessToken($sessionHttp->get('token'));
+
+        $playlistSpotify = [];
+        foreach ($playlistYoutube as $key=>$video) {
+            $title = $video['snippet']['title'];
+            $tracks = json_decode(json_encode($api->search($title, 'track')->tracks->items), true);
+            if (!empty($tracks)) {
+                $playlistSpotify[$key] = $tracks[0];
+            }
+            $playlistSpotify[$key]['youtube_title'] = $title;
         }
-        return ($titles);
+        return $playlistSpotify;
+    }
+
+    protected function addTracksToPlaylist($tracks) {
+
     }
 }
